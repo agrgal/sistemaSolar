@@ -24,6 +24,9 @@ Pulsando los números del 1 al 4 puede verse la información calculada por cada 
 (E) , distancia al sol (r), anomalía verdadera (vang) y coordenadas respecto a la eclíptica [xx,yy,zz]. Pulsando otro
 número, se muestran instrucciones.
 
+El paso del tiempo a dias julianos se realiza bajo las fórmulas encontradas en la web 
+https://agrupacionastronomicamagallanes.wordpress.com/experimento-de-eratostenes/conversion-de-fecha-a-dia-juliano/
+
 Posibles mejoras
 
 Las posibles mejoras pasarían por poder introducir el día en que empieza el cálculo de la órbita y afinar el cálculo 
