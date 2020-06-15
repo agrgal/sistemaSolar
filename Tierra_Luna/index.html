@@ -1,0 +1,93 @@
+<html><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.5">
+
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="Tierra_Luna.js"></script>
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+
+  <!-- This line removes any default padding and style.
+       You might only need one of these values set. -->
+  <style> 
+    body { padding: 0; margin: 0px; color: white; background-color: black; }  
+    #wrapper {
+      background-color: black; /* for visualization purposes */
+      text-align: center;
+      width: 100%;
+      overflow: auto;
+      /* border: 1px solid yellow; */
+    }
+    #Contenedor1 {
+      background-color: black; /* for visualization purposes */
+      float: left;
+      /* border: 3px solid black; */
+      width: 45%;
+      height: auto;
+      margin: 0px 10px;
+      display: inline-block;
+    }
+    #Contenedor2 {
+      background-color: black; /* for visualization purposes */
+      float: left;      
+      /* border: 3px solid blue; */
+      width: 50%;
+      height: 400px;
+      margin: 0px 10px;
+      padding: 10px 10px;
+      display: inline-block;
+      }
+      
+      #Contenedor3 {
+       background-color: yellow; 
+       position: absolute;
+       top: 200px;
+       right: 15%;
+       width: 400px;
+       height: 200px;
+       z-index: 10;
+      }
+      
+      #Contenedor3 p {
+        color: black; 
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
+  </style>
+  
+</head>
+
+<body>
+  <div id="wrapper">    
+      <div id="Contenedor2">
+
+  <h1 style="text-align: center;">Sistema Tierra - Luna</h1>
+<p style="text-align: justify;">En este peque&ntilde;o estudio (<span style="color: #00ffff;"><a style="color: #00ffff;" href="https://github.com/agrgal/sistemaSolar" target="_blank" rel="noopener">https://github.com/agrgal/sistemaSolar</a></span>) dejo documentaci&oacute;n sobre el problema de los dos cuerpos, tanto del punto de vista matem&aacute;tico, de la astronom&iacute;a, como con un significado m&aacute;s f&iacute;sico, dando significado a magnitudes como la energ&iacute;a de la &oacute;rbita o la conservaci&oacute;n del movimiento angular. Y la informaci&oacute;n de este programa, tambi&eacute;n.</p>
+<p style="text-align: justify;">El programa, Tierra-Luna escrito en processing (p5.js) resuelve el problema del movimiento de traslaci&oacute;n terrestre en torno al Sol de manera completa, seg&uacute;n los par&aacute;metros orbitales, resolviendo la ecuaci&oacute;n de Newton para ambos cuerpos. Los par&aacute;metros orbitales implicados son:&nbsp;<span style="color: #ffff00;"><strong>semieje mayor de la elipse (a), excentricidad (e), inclinaci&oacute;n de la &oacute;rbita (i), longitud del nodo ascendente (Omega), argumento del perihelio (w) y &eacute;poca de paso por el perihelio (Tau)</strong></span>, aunque en este &uacute;ltimo se utilizan datos equivalentes, como la longitud media en una fecha determinada (15/1/1985), o, el uso como dato de la longitud del perihelio, wm, la suma de Omega y w (para i peque&ntilde;as).</p>
+<p style="text-align: justify;">Se calcula adem&aacute;s el resto de par&aacute;metros f&iacute;sicos, como la energ&iacute;a de la &oacute;rbita y el momento angular, se muestra el dibujo de la &oacute;rbita y la posici&oacute;n de los puntos m&aacute;s cercanos y lejanos al sol, perihelios y afelios (solo Tierra). Para mostrar u ocultar las &oacute;rbitas pulsar espacio.</p>
+<p style="text-align: justify;">En el caso de la luna se utiliza una aproximaci&oacute;n. Se usa su<strong> semieje mayor (a), su excentricidad (e) y su inclinaci&oacute;n (i)</strong>. El resto de par&aacute;metros se utilizan, pero con datos inventados, ya que el verdadero movimiento lunar es m&aacute;s complejo, debido, principalmente, a la atracci&oacute;n que el Sol realiza sobre la Luna. Por lo tanto, el programa presenta un movimiento idealizado, del movimiento lunar. La trayectoria lunar, a escala, para poder verse, est&aacute; aumentada unas 50 veces. La verdadera trayectoria est&aacute; mucho m&aacute;s pegada a la Tierra.</p>
+<p style="text-align: justify;">Podemos aprender m&aacute;s en estas webs:&nbsp;<span style="color: #00ffff;"><a style="color: #00ffff;" href="https://www.educaixa.com/microsites/astronomiaII/las_fases_los_movimientos_de_la_luna/" target="_blank" rel="noopener">https://www.educaixa.com/microsites/astronomiaII/las_fases_los_movimientos_de_la_luna/</a>,&nbsp;</span><a href="https://es.wikipedia.org/wiki/%C3%93rbita_de_la_Luna" target="_blank" rel="noopener"><span style="color: #00ffff;">https://es.wikipedia.org/wiki/%C3%93rbita_de_la_Luna</span></a>. Por cierto, &iquest;sab&iacute;as que la Luna se aleja unos 38mm al a&ntilde;o de la Tierra?</p>
+<p style="text-align: justify;">El programa pide una fecha inicial para calcular la posici&oacute;n de la Tierra. Despu&eacute;s se puede variar con las teclas "+" y "-" (o cursores arriba y abajo) la cantidad de d&iacute;as que avanza en cada c&aacute;lculo. Tambi&eacute;n se puede hacer correr hacia atr&aacute;s.</p>
+<p style="text-align: justify;">Representa adem&aacute;s (pulsando "v") las velocidades y una representaci&oacute;n de ellas en la Tierra y en la Luna.</p>
+<p style="text-align: justify;">Pulsando los n&uacute;meros del 1 al 2 puede verse la informaci&oacute;n calculada para la Tierra y para la Luna: anomal&iacute;a media (M), anomal&iacute;a exc&eacute;ntrica (E) , distancia (r), anomal&iacute;a verdadera (vang) y coordenadas respecto a la ecl&iacute;ptica [xx,yy,zz]. Pulsando otro n&uacute;mero, se muestran instrucciones. Usa CTRL+ y CTRL- si necesitas ajustar la simulaci&oacute;n a la pantalla.</p>
+<p style="text-align: justify;">El paso del tiempo a dias julianos se realiza bajo las f&oacute;rmulas encontradas en la web <span style="color: #00ffff;"><a style="color: #00ffff;" href="https://agrupacionastronomicamagallanes.wordpress.com/experimento-de-eratostenes/conversion-de-fecha-a-dia-juliano/" target="_blank" rel="nofollow noopener">https://agrupacionastronomicamagallanes.wordpress.com/experimento-de-eratostenes/conversion-de-fecha-a-dia-juliano/</a></span></p>
+<h3 style="text-align: justify;">Posibles mejoras</h3>
+<p style="text-align: justify;">Pensando en otras mejoras, podr&iacute;amos hacer un programa en el que calculemos si la Luna atraviesa la l&iacute;nea que une el Sol y la Tierra, determinando el momento de los eclipses.&nbsp;</p>
+<p style="text-align: justify;">Documentaci&oacute;n: <span style="color: #00ffff;"><a style="color: #00ffff;" href="https://github.com/agrgal/sistemaSolar/tree/master/problema_dos_cuerpos" target="_blank" rel="noopener">https://github.com/agrgal/sistemaSolar/tree/master/problema_dos_cuerpos</a></span></p>
+  
+  </div>
+       
+      <div id="Contenedor1">      
+ 
+      </div>
+      
+      <div id="Contenedor3">
+        <p>Introduce la fecha comienzo de la simulación. Formato dia/mes/año. Por ejemplo, 03/05/2001</p>
+        <p>Fechas superiores al 15-Ene-1985</p>
+      </div>
+      
+  </div>
+</body>
+
+</html>
