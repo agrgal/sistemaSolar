@@ -114,8 +114,9 @@ function draw() {
      // Introducción de fechas
   if (modo==0) {   
      background(0);
-     text("Día de comienzo de la simulación: "+getDia.value(),15,40);
+     text("Día de comienzo de la simulación (fecha posterior a 15/01/1985): "+getDia.value(),15,40);
      text(mensaje,15,80);
+     text("Please, introduce a day after 15-January-1985, in format 'dd/mm/yyyy' and accept",15,140);
    } 
    
    // Dibujo de las órbitas
