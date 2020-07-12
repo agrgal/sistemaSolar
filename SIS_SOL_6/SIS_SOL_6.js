@@ -10,6 +10,7 @@ let dTierra = 12984; // diamtero júpiter de referencia, en km
 let trazoO= 1; // trazo órbita. Inicialmente ON
 let trazoE = 0; // trazo elementos
 let trazoV = 0; // trazo velocidad
+let trazoS = 1; // estrellas
 let instrucciones=1; // ver instrucciones, por defecto sí
 let perspectiva = 1; // ver en modo perspectiva
 let modo = 0 ;
@@ -37,6 +38,9 @@ let px0 = 0; // valor inicial del tamaño de pantalla relativo
 let planeta = [];
 
 let i;
+
+// estrellas
+let estrellas=[];
 
 // *****
 // SETUP
@@ -92,6 +96,12 @@ function setup() {
   boton.position(800, 60);
   boton.mousePressed(changeBG);
   // mensaje
+  
+  // estrellas
+  for (i=1;i<200;i++) {
+    estrellas.push(new star());    
+  }
+  
 }
 
 // **************
@@ -109,7 +119,7 @@ function draw() {
    textSize(20);
    fill(255);  
    // inicialización de variables   
-   if (perspectiva==1) {ancho = width;   alto = height;  desfase=0;} //desfase = alto/35; 
+   if (perspectiva==1) {ancho = width;   alto = height;  desfase=0;} // desfase = alto/35; 
    if (perspectiva==0) {ancho = height;   alto = height;  desfase=0;} // caso proporcional
    
      // Introducción de fechas
@@ -125,6 +135,14 @@ function draw() {
    
        background(0);     
        // empieza en 1, la Tierra.
+       
+       // Dibujar estrellas
+       if (trazoS==1) {
+         for (i=1;i<estrellas.length;i++) {
+            estrellas[i].dibujar(); 
+         }
+       }
+       
        for (i=1;i<planeta.length;i++) {
          if (trazoO==1 && planeta[i].checkOrbita()==0) {planeta[i].orbita(); } 
          if (trazoE==1 && trazoO==1 && planeta[i].checkOrbita()==0) {planeta[i].elementos();} // antes de la trayectoria. Dibujar los elementos de la órbita
@@ -158,7 +176,7 @@ function draw() {
          text("Tecla 'e' elementos de las órbitas (sólo con órbitas conectadas) ",10,65);
          text("Tecla 'p' para conectar o desconectar modo a escala o en perspectiva",10,85);
          text("Tecla '+'"+"/"+"'-' para avanzar y retroceder, acelerar o decelerar el movimiento planetario",10,105);
-         text("Tecla 'v' para mostrar vectores velocidad",10,125);
+         text("Tecla 'v' para mostrar vectores velocidad, 's' para el fondo de estrellas",10,125);
          text("Alejamiento relativo al sol (zoom): "+nfp(30+log(px/px0)/log(1.2),0,1),1000,65);
          text("Avance/retroceso: "+nfp(gaps,0,1)+" Días transcurridos: "+nfp(ts,0,1),1000,85);
          text("Sitúate con el cursor sobre un planeta para ver sus datos",1000,45);
@@ -440,6 +458,24 @@ class planetas {
 } // fin de la clase planetas
 
 
+// ****************
+// Clase estrellas
+// ****************
+class star {
+ 
+  constructor() {
+     this.xx = random(0,width);
+     this.yy = random(0,height);
+     this.r = random(1,2);
+  }
+  
+  dibujar() {
+    stroke(255);
+    fill(255);
+    circle(this.xx,this.yy,random(1,5));
+  }  
+}
+
 // *******************
 // Funciones
 // *******************
@@ -490,6 +526,10 @@ function keyPressed() {
  
   if (key=='e' || key=='E') { // elementos
      trazoE = trazoE ^ true; 
+  }
+  
+  if (key=='s' || key=='S') { // estrellas
+     trazoS = trazoS ^ true; 
   }
   
   if (key=='v' || key=='V') { // velocidad
