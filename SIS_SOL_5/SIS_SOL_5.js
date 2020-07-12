@@ -126,7 +126,8 @@ function draw() {
        background(0);     
        // empieza en 1, la Tierra.
        for (i=1;i<planeta.length;i++) {
-         if (trazoO==1 && planeta[i].checkOrbita()==0) {planeta[i].orbita();} //antes que la trayectoria. Dibujar la órbita
+         if (trazoO==1 && planeta[i].checkOrbita()==0) {planeta[i].orbita(); planeta[i].imagen.show();} 
+                    else {planeta[i].imagen.hide();}  //antes que la trayectoria. Dibujar la órbita. Si no dibujo la ŕbita, no muestro el planeta
          if (trazoE==1 && trazoO==1 && planeta[i].checkOrbita()==0) {planeta[i].elementos();} // antes de la trayectoria. Dibujar los elementos de la órbita
          if (planeta[i].checkOrbita()==0) {
            planeta[i].trayectoria(); // calculo la trayectoria
@@ -202,7 +203,8 @@ class planetas {
     this.energia = (log(G)+log(Ms)+log(this.masa)-log(2)-log(this.a)); // Energy[i] = (log(G)+log(Ms)+log(m[i])-log(2)-log(a[i]));
     this.L= log(2)+log(PI)+log(this.a)+log(this.b)+log(this.masa)-log(this.periodo); // L[i]=log(2)+log(PI)+log(a[i])+log(b[i])+log(m[i]/1e3)-log(T[i]);
     // imagen
-    this.imagen = loadImage(this.ri); // carga el objeto imagen del planeta
+    // this.imagen = loadImage(this.ri); // carga el objeto imagen del planeta
+    this.imagen = createImg(this.ri,this.name); // carga el objeto imagen del planeta como un elemento del DOM
     this.planetSize = int(tp(this.diametro,1)); // después hay que cambiarlo en el programa planetSize[i]= int(25*diam[i]/sol.diam); 
     this.factorTamaño = fT;
     // ventana de informacion
@@ -222,9 +224,11 @@ class planetas {
     // console.log("Tamaño planeta: "+this.planetSize );
     this.planetSize = int(tp(this.diametro,fc)); // con diametro de tierra
     // if (this.nombre=="Sol") {this.planetSize=50;} // else {text("Zoom: x"+fc,10,40);}  // El sol siempre del mismo tamaño
-    this.imagen.resize(this.planetSize,0);
-    imageMode(CENTER);
-    image(this.imagen,tx(coordX),ty(coordY));
+    // this.imagen.resize(this.planetSize,0);
+    // imageMode(CENTER);
+    // image(this.imagen,tx(coordX),ty(coordY));
+    this.imagen.size(this.planetSize,this.planetSize);  
+    this.imagen.position(tx(coordX)-this.planetSize/2,ty(coordY)-this.planetSize/2);  
     // texto en pantalla   
     if (this.vInf>=millis() && objetoinformacion==this.nombre && this.nombre!="Sol" ){ // Si se ha activado con la funcion seguimiento 
           fill(200,200,200,200);
