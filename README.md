@@ -1,9 +1,9 @@
 
-#Sistema Solar - planetas interiores
+# Sistema Solar - planetas interiores
 
-En este pequeño estudio (https://github.com/agrgal/sistemaSolar) dejo documentación sobre el problema de los dos cuerpos, tanto del punto de vista matemático, de la astronomía, como con un significado más físico, dando significado a magnitudes como la energía de la órbita o la conservación del movimiento angular.
+[En este pequeño estudio](https://github.com/agrgal/sistemaSolar) dejo documentación sobre el problema de los dos cuerpos, tanto del punto de vista matemático, de la astronomía, como con un significado más físico, dando significado a magnitudes como la energía de la órbita o la conservación del movimiento angular.
 
-Los programas están escritos en Processing. Los más elaborados son SIS_SOL_1 (Java),  y SIS_SOL_6(p5.js) , en los que se resuelve el problema completamente a partir de los parámetros orbitales: semieje mayor de la elipse (a), excentricidad (e), inclinación de la órbita (i), longitud del nodo ascendente (Omega), argumento del perihelio (w) y época de paso por el perihelio (Tau), aunque en este último se utilizan datos equivalentes, como la longitud media en una fecha determinada (15/1/1985), o, el uso como dato de la longitud del perihelio, wm, la suma de Omega y w (para i pequeñas).
+Los programas están escritos en **Processing**. Los más elaborados son SIS_SOL_1 (Java),  y SIS_SOL_6(p5.js) , en los que se resuelve el problema completamente a partir de los parámetros orbitales: semieje mayor de la elipse (a), excentricidad (e), inclinación de la órbita (i), longitud del nodo ascendente (Omega), argumento del perihelio (w) y época de paso por el perihelio (Tau), aunque en este último se utilizan datos equivalentes, como la longitud media en una fecha determinada (15/1/1985), o, el uso como dato de la longitud del perihelio, wm, la suma de Omega y w (para i pequeñas).
 
 El programa calcula además el resto de parámetros físicos, como la energía de la órbita y el momento angular, muestra el dibujo de la órbita y la posición de los puntos más cercanos y lejanos al sol, perihelios y afelios. Para mostrar u ocultar las órbitas pulsar espacio.
 
@@ -15,11 +15,11 @@ SIS_SOL_1: Pulsando los números del 1 al 4 puede verse la información calculad
 
 En SIS_SOL_6: señalando con el cursor cada planeta, se muestra una caja informativa con los datos del cálculo
 
-El paso del tiempo a dias julianos se realiza bajo las fórmulas encontradas en la web https://agrupacionastronomicamagallanes.wordpress.com/experimento-de-eratostenes/conversion-de-fecha-a-dia-juliano/
+El paso del tiempo a dias julianos se realiza bajo las fórmulas encontradas en la [web](https://agrupacionastronomicamagallanes.wordpress.com/experimento-de-eratostenes/conversion-de-fecha-a-dia-juliano/)
 
-Posibles mejoras
+## Posibles mejoras
 
 Pensando en otras mejoras, podríamos hacer un programa en el que calculemos la posición de los astros respecto de un observador terrestre o un programa que simule un viaje entre la Tierra y Marte.
 
-Documentación: https://github.com/agrgal/sistemaSolar/tree/master/problema_dos_cuerpos
+[Documentación](https://github.com/agrgal/sistemaSolar/tree/master/problema_dos_cuerpos)
 
